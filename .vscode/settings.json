@@ -1,0 +1,5 @@
+{
+    "typescript.format.insertSpaceAfterTypeAssertion": true,
+    "typescript.tsdk": "built",
+    "javascript.validate.enable": false
+}
