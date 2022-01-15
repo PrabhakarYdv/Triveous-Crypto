@@ -2,7 +2,11 @@ import React, {Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
 
+<<<<<<< HEAD
 class Currency extends Component {
+=======
+class Profile extends Component {
+>>>>>>> 3934aa623d835fb2d3986418173eed1d73327787
   state = {};
   render() {
     return (
@@ -13,7 +17,11 @@ class Currency extends Component {
   }
 }
 
+<<<<<<< HEAD
 
+=======
+export default Profile;
+>>>>>>> 3934aa623d835fb2d3986418173eed1d73327787
 
 const styles = StyleSheet.create({
   container: {
@@ -22,5 +30,9 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     alignItems: 'center',
   },
+<<<<<<< HEAD
 });
 export default Currency;
+=======
+});
+>>>>>>> 3934aa623d835fb2d3986418173eed1d73327787

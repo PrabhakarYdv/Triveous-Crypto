@@ -14,7 +14,10 @@
     "axois": "^0.0.1-security",
     "react": "17.0.2",
     "react-native": "0.66.4",
+<<<<<<< HEAD:Triveous_Crypto/package.json
     "react-native-vector-icons": "^9.0.0",
+=======
+>>>>>>> 3934aa623d835fb2d3986418173eed1d73327787:Triveous/package.json
     "react-navigation": "^4.4.4",
     "react-navigation-stack": "^2.10.4",
     "react-navigation-tabs": "^2.11.1"
