@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import type { Node } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 
 function App() {
   return (
     <View style={styles.application}>
-    <Text style={styles.title}>Prabhakar is Startted React App</Text>
+      <Text style={styles.title}>All Currency</Text>
+
     </View>
   );
 };
@@ -20,11 +20,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    padding: 10,
-    backgroundColor: "blue",
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    padding: 20,
     color: "white",
   },
 
