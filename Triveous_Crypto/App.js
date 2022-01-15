@@ -1,13 +1,12 @@
 import React from 'react';
 import type { Node } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import MainScreenNavigator from '../Triveous_Crypto/app/config/Tab_Navigation';
+
 
 function App() {
   return (
     <View style={styles.application}>
-      {/* <Text style={styles.title}>Prabhakar is Startted React App</Text> */}
-      <MainScreenNavigator />
+    <Text style={styles.title}>Prabhakar is Startted React App</Text>
     </View>
   );
 };
