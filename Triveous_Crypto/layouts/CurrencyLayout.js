@@ -1,10 +1,31 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, Image, StyleSheet, AsyncStorage } from "react-native";
 import { StackNavigationProp } from "react-navigation-stack/lib/typescript/src/vendor/types";
 
-const saveToFaviroate = (id) => {
-    console.log(id)
+const saveToFaviroate = async (id, coinImage, coinName, coinShortName, coinCurrentPrice, priceChangePercentage) => {
+    toSaveData = [coinImage, coinName, coinShortName, coinCurrentPrice, priceChangePercentage]
+    try {
+        await AsyncStorage.setItem(id, JSON.stringify(toSaveData))
+    } catch (error) {
+        console.log("error")
+    }
 }
+const backdata=()=> readtData(id).then(result => {
+        return  JSON.parse(result)
+
+    })
+
+const readtData = (key) => {
+    try {
+        const value =  AsyncStorage.getItem(key);
+        if (value != null) {
+            return value
+        }
+    } catch (error) {
+        console.log('error')
+    }
+}
+
 
 
 const CurrencyLayout = ({ id, coinImage, coinName, coinShortName, coinCurrentPrice, priceChangePercentage }) => {
@@ -29,7 +50,7 @@ const CurrencyLayout = ({ id, coinImage, coinName, coinShortName, coinCurrentPri
                         <Text style={styles.priceChangePercentage, { color: priceChangePercentageColor }}>{priceChangePercentage.toFixed(2)}%</Text>
                     </View>
                     <View>
-                        <TouchableOpacity onPress={()=>saveToFaviroate(id)}>
+                        <TouchableOpacity onPress={() => saveToFaviroate(id, coinImage, coinName, coinShortName, coinCurrentPrice, priceChangePercentage)}>
                             <Image source={require('../assets/fav.png')} style={styles.btnFav} />
                         </TouchableOpacity>
                     </View>

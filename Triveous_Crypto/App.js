@@ -69,6 +69,7 @@ function App() {
                 priceChangePercentage={item.price_change_percentage_7d_in_currency}
               />
             )}
+            
           />
         </View>
       </View>
