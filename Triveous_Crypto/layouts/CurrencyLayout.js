@@ -6,18 +6,18 @@ const saveToFaviroate = async (id, coinImage, coinName, coinShortName, coinCurre
     toSaveData = [coinImage, coinName, coinShortName, coinCurrentPrice, priceChangePercentage]
     try {
         await AsyncStorage.setItem(id, JSON.stringify(toSaveData))
+        console.log(`${id} Data has been Saved in Local stoarge !!`)
     } catch (error) {
         console.log("error")
     }
 }
-const backdata=()=> readtData(id).then(result => {
-        return  JSON.parse(result)
-
-    })
+const backdata = () => readtData(id).then(result => {
+    return JSON.parse(result)
+})
 
 const readtData = (key) => {
     try {
-        const value =  AsyncStorage.getItem(key);
+        const value = AsyncStorage.getItem(key);
         if (value != null) {
             return value
         }
