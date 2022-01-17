@@ -1,8 +1,16 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 import { StackNavigationProp } from "react-navigation-stack/lib/typescript/src/vendor/types";
-const CurrencyLayout = ({ coinImage, coinName, coinShortName, coinCurrentPrice, priceChangePercentage }) => {
+
+const saveToFaviroate = (id) => {
+    console.log(id)
+}
+
+
+const CurrencyLayout = ({ id, coinImage, coinName, coinShortName, coinCurrentPrice, priceChangePercentage }) => {
     const priceChangePercentageColor = priceChangePercentage > 0 ? '#34C759' : '#FF3B30';
+
+
     return (
         <TouchableOpacity>
             <View style={styles.line} />
@@ -20,7 +28,11 @@ const CurrencyLayout = ({ coinImage, coinName, coinShortName, coinCurrentPrice, 
                         <Text style={styles.currentPrice}>${coinCurrentPrice.toLocaleString('en-US', { currency: 'USD' })}</Text>
                         <Text style={styles.priceChangePercentage, { color: priceChangePercentageColor }}>{priceChangePercentage.toFixed(2)}%</Text>
                     </View>
-                    <Image source={require('../assets/fav.png')} style={styles.btnFav} />
+                    <View>
+                        <TouchableOpacity onPress={()=>saveToFaviroate(id)}>
+                            <Image source={require('../assets/fav.png')} style={styles.btnFav} />
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
             <View style={styles.line} />

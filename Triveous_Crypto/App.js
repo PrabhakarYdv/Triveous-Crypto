@@ -61,6 +61,7 @@ function App() {
             data={searchData}
             renderItem={({ item }) => (
               <CurrencyLayout
+              id={item.id}
                 coinImage={item.image}
                 coinName={item.name}
                 coinShortName={item.symbol}
@@ -121,6 +122,10 @@ const styles = StyleSheet.create({
     color: 'white',
     backgroundColor: 'pink'
   },
+  btnFav: {
+    height: 30,
+    width: 30,
+},
 });
 
 export default App;
