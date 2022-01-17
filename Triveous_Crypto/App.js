@@ -1,24 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import type { Node } from 'react';
-import { StyleSheet, Text, View, FlatList, TouchableOpacity, Button, TextInput, TextInputComponent, TextComponent } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity, Button, TextInput, TextInputComponent, TextComponent, Pressable } from 'react-native';
 import CurrencyLayout from './layouts/CurrencyLayout';
 import { SAMPLE_DATA } from '../Triveous_Crypto/data/ResponseModel'
 import { getData } from './data/API_Call';
-
+import _ from 'lodash';
 
 // Main Application
 function App() {
   const [data, setData] = useState([])
+  const [searchData, setsearchData] = useState([])
   const [selectCoin, setselectCoinData] = useState(null)
+  const [querText, setQueryText] = useState('')
 
   useEffect(() => {
     // Calling API
     const fetchData = async () => {
       const responseData = await getData();
       setData(responseData);
+      setsearchData(responseData);
     }
     fetchData();
   }, [])
+
+  // Searching 
+  const handleSearch = (text) => {
+    if (text) {
+      const newData = data.filter((item) => {
+        const itemData = item.name ? item.name.toLowerCase() : ''.toLowerCase();
+        return itemData.indexOf(text.toLowerCase()) > -1;
+      });
+      setsearchData(newData);
+      setQueryText(text);
+    }
+    else {
+      setsearchData(data)
+      setQueryText(text)
+    }
+  }
 
   return (
     <View style={styles.application}>
@@ -28,13 +47,18 @@ function App() {
           <Button title='Favorite' style={styles.btnFavorite} />
         </View>
         <View style={styles.line} />
-        <TextInput placeholder='Search Currency' style={styles.searchBar} />
+        <TextInput placeholder='Search Currency'
+          value={querText}
+          underlineColorAndroid="transparent"
+          style={styles.searchBar}
+          onChangeText={(text) => handleSearch(text)}
+        />
         <View style={styles.line} />
         <View>
           {/* Items */}
           <FlatList
             keyExtractor={(item) => item.id}
-            data={data}
+            data={searchData}
             renderItem={({ item }) => (
               <CurrencyLayout
                 coinImage={item.image}
@@ -94,6 +118,8 @@ const styles = StyleSheet.create({
   btnFavorite: {
     fontWeight: 'bold',
     fontSize: 20,
+    color: 'white',
+    backgroundColor: 'pink'
   },
 });
 
